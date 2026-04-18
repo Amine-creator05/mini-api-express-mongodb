@@ -73,10 +73,10 @@ Create a client:
 ```json
 POST /clients
 {
-  "nom": "John Doe",
-  "email": "john@example.com",
+  "nom": "Amine",
+  "email": "amine.moumou05@gmail.com",
   "telephone": "123456789",
-  "ville": "Paris"
+  "ville": "casablanca"
 }
 ```
 
