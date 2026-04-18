@@ -12,3 +12,4 @@ app.use("/commandes", require("./routes/commandeRoutes"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use("/auth", require("./routes/authRoutes"));
