@@ -1,4 +1,4 @@
-# 🚀 Mini API REST - Express & MongoDB + JWT
+#  Mini API REST - Express & MongoDB + JWT
 
 ## 📌 Description
 Ce projet est une mini API REST développée avec **Node.js**, **Express.js** et **MongoDB**, en respectant une architecture **MVC**.  
