@@ -1,109 +1,136 @@
-# Mini REST API with Node.js, Express, and MongoDB
+# 🚀 Mini API REST - Express & MongoDB + JWT
 
-This is a simple REST API for managing Clients, Produits (Products), and Commandes (Orders) using MVC architecture.
+## 📌 Description
+Ce projet est une mini API REST développée avec **Node.js**, **Express.js** et **MongoDB**, en respectant une architecture **MVC**.  
+Elle permet de gérer un système commercial simple avec authentification sécurisée via **JWT (JSON Web Token)**.
 
-## Features
+---
 
-- **Clients**: nom, email, téléphone, ville
-- **Produits**: nom, catégorie, prix, quantité en stock
-- **Commandes**: date, client, produits + quantités, montant total
+## 🧱 Fonctionnalités
 
-Each module supports full CRUD operations.
+### 🔐 Authentification (JWT)
+- Inscription d’un utilisateur
+- Connexion avec génération de token
+- Protection des routes avec middleware
 
-## Project Structure
+### 👤 Clients
+- Ajouter un client
+- Afficher tous les clients
+- Modifier un client
+- Supprimer un client
 
-```
+### 📦 Produits
+- Ajouter un produit
+- Afficher tous les produits
+- Modifier un produit
+- Supprimer un produit
+
+### 🧾 Commandes
+- Créer une commande
+- Afficher les commandes
+- Modifier une commande
+- Supprimer une commande
+
+---
+
+## ⚙️ Technologies utilisées
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JSON Web Token (JWT)
+- Bcrypt.js
+
+---
+
+## 📁 Structure du projet
+
 project/
+│
 ├── models/
-│   ├── Client.js
-│   ├── Produit.js
-│   └── Commande.js
 ├── controllers/
-│   ├── clientController.js
-│   ├── produitController.js
-│   └── commandeController.js
 ├── routes/
-│   ├── clientRoutes.js
-│   ├── produitRoutes.js
-│   └── commandeRoutes.js
+├── middleware/
 ├── config/
-│   └── db.js
+├── screenshots/
 ├── app.js
-├── package.json
-└── .env
-```
+└── README.md
 
-## Installation
+---
 
-1. Clone or download the project.
-2. Run `npm install` to install dependencies.
-3. Ensure MongoDB is running on `mongodb://127.0.0.1:27017/mini_api`.
-4. Run `npm run dev` to start the server with nodemon.
+## 🚀 Installation et exécution
 
-## Usage
+# Cloner le projet
+git clone https://github.com/Amine-creator05/mini-api-express-mongodb.git
 
-The server runs on port 3000.
+# Accéder au dossier
+cd mini-api-express-mongodb
 
-### API Endpoints
+# Installer les dépendances
+npm install
 
-#### Clients
-- `POST /clients` - Create a client
-- `GET /clients` - Get all clients
-- `GET /clients/:id` - Get a client by ID
-- `PUT /clients/:id` - Update a client
-- `DELETE /clients/:id` - Delete a client
+# Lancer le serveur
+npm run dev
 
-#### Produits
-- `POST /produits` - Create a product
-- `GET /produits` - Get all products
-- `GET /produits/:id` - Get a product by ID
-- `PUT /produits/:id` - Update a product
-- `DELETE /produits/:id` - Delete a product
+---
 
-#### Commandes
-- `POST /commandes` - Create an order (calculates total automatically)
-- `GET /commandes` - Get all orders (populated)
-- `GET /commandes/:id` - Get an order by ID
-- `PUT /commandes/:id` - Update an order
-- `DELETE /commandes/:id` - Delete an order
+## 🔑 Authentification
 
-### Example Requests
+### 📌 Register
+POST /auth/register
 
-Create a client:
-```json
-POST /clients
-{
-  "nom": "Amine",
-  "email": "amine.moumou05@gmail.com",
-  "telephone": "123456789",
-  "ville": "casablanca"
-}
-```
+### 📌 Login
+POST /auth/login
 
-Create a product:
-```json
-POST /produits
-{
-  "nom": "Laptop",
-  "categorie": "Electronics",
-  "prix": 1000,
-  "quantite_stock": 50
-}
-```
+👉 Retourne un token JWT à utiliser dans les requêtes protégées
 
-Create an order:
-```json
-POST /commandes
-{
-  "client": "client_id_here",
-  "produits": [
-    { "produit": "product_id_here", "quantite": 2 }
-  ]
-}
-```
+---
 
-## Troubleshooting
+## 🔒 Utilisation du token
 
-- Ensure MongoDB is installed and running.
-- Check the .env file for MONGO_URI.
-- Use tools like Postman to test the API.
+Dans Postman → Headers :
+
+Authorization: YOUR_TOKEN
+
+---
+
+## 🌐 Routes API
+
+### Clients
+- GET /clients
+- POST /clients
+- PUT /clients/:id
+- DELETE /clients/:id
+
+### Produits
+- GET /produits
+- POST /produits
+- PUT /produits/:id
+- DELETE /produits/:id
+
+### Commandes
+- GET /commandes
+- POST /commandes
+- PUT /commandes/:id
+- DELETE /commandes/:id
+
+---
+
+## 📬 Tests
+Toutes les routes ont été testées avec Postman  
+Les captures d’écran sont disponibles dans le dossier TEST DANS POSTMAN/
+
+---
+
+## ✅ Bonnes pratiques respectées
+- Architecture MVC
+- Séparation des routes
+- Utilisation de middleware
+- Sécurité avec JWT
+- Hash des mots de passe (bcrypt)
+- Réponses JSON avec codes HTTP
+
+---
+
+## 👨‍💻 Auteur
+Mohamed Amine MOUMOU
