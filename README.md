@@ -122,6 +122,43 @@ Les captures d’écran sont disponibles dans le dossier TEST DANS POSTMAN/
 
 ---
 
+## 🔐 Gestion des rôles et des autorisations (RBAC)
+
+Une gestion des rôles et des permissions a été ajoutée afin de contrôler l’accès aux routes de l’API.
+
+### 👥 Rôles
+Chaque utilisateur possède un rôle qui définit ses droits d’accès :
+- admin : accès complet (CRUD sur tous les modules)
+- commercial : gestion des clients et commandes
+- magasinier : gestion des produits
+- consultation : accès en lecture uniquement
+
+### 🛡️ Permissions
+Chaque rôle contient des permissions spécifiques pour :
+- clients
+- produits
+- commandes
+
+Avec les actions :
+- create
+- read
+- update
+- delete
+
+### 🔒 Sécurisation
+L’accès aux routes est protégé par :
+- Middleware JWT → vérifie l’authentification
+- Middleware permissions → vérifie les droits d’accès
+
+### ⚠️ Codes HTTP
+- 401 → utilisateur non authentifié
+- 403 → accès interdit (permissions insuffisantes)
+
+### 🧪 Tests avec Postman
+Les tests montrent :
+- accès autorisé selon le rôle 
+- accès refusé si permissions insuffisantes 
+
 ## ✅ Bonnes pratiques respectées
 - Architecture MVC
 - Séparation des routes
