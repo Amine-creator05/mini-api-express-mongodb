@@ -1,14 +1,26 @@
-const express = require("express");
-const router = express.Router();
-const clientController = require("../controllers/clientController");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
-router.post("/", clientController.createClient);
-router.get("/", clientController.getClients);
-router.get("/:id", clientController.getClient);
-router.put("/:id", clientController.updateClient);
-router.delete("/:id", clientController.deleteClient);
-const auth = require("../middleware/authMiddleware");
+module.exports = async (req, res, next) => {
+  const token = req.header("Authorization");
 
-router.get("/", auth, clientController.getClients);
-router.post("/", auth, clientController.createClient);
-module.exports = router;
+  if (!token) {
+    return res.status(401).json({ message: "Access denied" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, "SECRET_KEY");
+
+    // ✅ NOW it's inside async → works
+    const user = await User.findById(decoded.id).populate("role");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    req.user = user;
+    next();
+  } catch (err) {
+    res.status(400).json({ message: "Invalid token" });
+  }
+};

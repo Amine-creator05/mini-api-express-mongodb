@@ -13,3 +13,7 @@ module.exports = (req, res, next) => {
     res.status(400).json({ message: "Invalid token" });
   }
 };
+const User = require("../models/User");
+
+const user = await User.findById(decoded.id).populate("role");
+req.user = user;
